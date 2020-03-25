@@ -1,0 +1,100 @@
+/* setting.html */
+/* deposit.html */
+.from {
+	position: relative;
+	width: 20%;
+	top: 100px;
+	left: 40%;
+	height: 250px;
+	font-size: 18px;
+	line-height: 28px;
+}
+
+.from h2 {
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.from hr {
+	position: absolute;
+	top: 36px;
+	left: 0;
+	width: 100%;
+}
+
+.from label {
+	position: absolute;
+	left: 0;
+	height: 28px;
+}
+
+#label1 {
+	top: 20%;
+}
+
+#label2 {
+	top: 40%;
+}
+
+#label3 {
+	top: 60%;
+}
+
+.from .input1,
+.input2,
+.input3 {
+	position: absolute;
+	width: 70%;
+	right: 0;
+	height: 28px;
+	box-sizing: border-box;
+	padding: 0 5px;
+	border: 1px #34495e solid;
+	border-radius: 2px;
+}
+
+.from .input1,
+.input2,
+.input3:active {
+	color: #3498db;
+}
+
+.input1 {
+	top: 20%;
+}
+
+.input2 {
+	top: 40%;
+}
+
+.input3 {
+	top: 60%;
+}
+
+.true,
+.false {
+	position: absolute;
+	width: 100px;
+	height: 24px;
+	bottom: 5%;
+	border: 1px #34495e solid;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+.true,.false:hover{
+	background-color: #2980b9;
+	color: #FFF;
+}
+
+.true,.false:active{
+	background-color: #3498db;
+}
+.true {
+	left: 10%;
+}
+
+.false {
+	right: 10%;
+}
