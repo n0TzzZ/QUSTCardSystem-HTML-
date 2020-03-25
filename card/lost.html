@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>挂失</title>
-    <style>
-        form {
-            text-align: center;
-            font-size: 50px;
-            margin: auto;
-        }
-        
-        form input {
-            font-size: 50px;
-        }
-    </style>
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/form.css" />
+		<title>卡挂失</title>
+	</head>
 
-<body>
-    <form action="LostServlet" method="post">
-        <input type="text" name="money" id="money" placeholder="请输入饭卡账号">
-        <br /><br /><br /><br /><br /><br />
-        <input type="submit" value="  提交  " style="border-radius: 10px;">
-    </form>
-</body>
+	<body>
+		<form class="from" action="LostServlet" method="post">
+			<h2>卡挂失</h2>
+			<hr>
+			<label for="cardid" id="label1">卡号:</label>
+			<input type="text" name="cardid" id="cardid" class="input1" placeholder="请输入卡号">
+			<label for="stuname" id="label2">失主姓名:</label>
+			<input type="text" name="stuname" id="stuname" class="input2" placeholder="请输入姓名">
+			<label for="stuid" id="label3">学号:</label>
+			<input type="text" name="stuid" id="stuid" class="input3" placeholder="请输入学号">
+			<input type="submit" value="确 定" class="true">
+			<input type="reset" value="重 置" class="false">
+		</form>
+	</body>
 
 </html>
