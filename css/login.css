@@ -1,86 +1,212 @@
-* {
-    margin: 0;
-    padding: 0;
-}
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Roboto:wght@400;700&display=swap");
 
-img {
-    margin-left: 100px;
-    margin-top: 50px;
+* {
+	font-family: "Noto Sans SC", sans-serif;
+	margin: 0;
+	padding: 0;
+	color: #2980b9;
 }
 
 body {
-    background: url(../img/1.jpeg) no-repeat center center/cover;
-    color: #f4f4f4;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-h1 {
-    text-align: center;
+.container img {
+	position: absolute;
+	left: 20%;
+	top: 20%;
+	width: 35%;
+	border: none;
+	border-radius: .8rem;
 }
 
-main {
-    margin-top: -50px;
-    float: right;
-    width: 500px;
-    height: 420px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    padding: 50px;
+.switch span {
+	color: #bdc3c7;
+	font-size: 1.4rem;
+	cursor: pointer;
 }
 
-label {
-    width: 100px;
-    float: left;
-    text-align: right;
-    margin-top: 28px;
+.switch span.active {
+	color: #2980b9;
 }
 
-main form,
-main input {
-    margin-top: 30px;
-    font-size: 22px;
+.panel {
+	position: absolute;
+	right: 20%;
+	width: 30%;
+	top: 20%;
+	display: flex;
+	justify-content: center;
 }
 
-main form {
-    text-align: center;
+form {
+	width: 12rem;
+	margin: 2rem 0 0;
 }
 
-#teacher {
-    margin-left: 40px;
+form .input {
+	position: relative;
+	width: 100%;
+	height: 2rem;
+	transition: .5s all;
+	margin: 2rem 0;
 }
 
-main .submit {
-    width: 180px;
-    padding: 10px;
+.input input {
+	padding: 2px 0;
+	font-size: 16px;
+	outline: none;
+	width: 100%;
+	border: none;
+	border-radius: 2px;
+	border-bottom: .1rem #3498db solid;
 }
 
-main p {
-    font-size: 12px;
-    text-align: center;
-    margin-top: 20px;
+.input::after {
+	content: attr(placeholder);
+	position: absolute;
+	left: 0;
+	top: -20%;
+	font-size: 1.3rem;
+	color: #2980b9;
+	transition: .3s;
 }
 
-main p a {
-    text-decoration: none;
+.input.focus::after {
+	top: -70%;
+	font-size: 1rem;
 }
 
-main p a:visited {
-    color: rgb(238, 223, 9);
+.login .input#stuid,
+.login .input#repeat {
+	margin: 0;
+	height: 0;
+	opacity: 0;
 }
 
-footer {
-    display: block;
-    text-align: center;
-    margin-top: 500px;
+form span {
+	display: block;
+	color: #2980b9;
+	font-size: .8rem;
+	cursor: pointer;
+}
+
+.submit {
+	position: relative;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	margin: 2rem 0 0;
+	width: 12rem;
+	height: 3.5rem;
+	border-radius: 3.5rem;
+	background: linear-gradient(90deg, #3498db, #1abc9c);
+	box-shadow: 0 0 8px #3498db;
+	font-size: 24px;
+	color: #FFF;
+	transition: .5s all;
+}
+
+.submit p {
+	color: #FFF;
+}
+
+.active p {
+	color: transparent;
+}
+
+.active.submit {
+	width: 3.5rem;
+
+}
+
+.loading {
+	opacity: 0;
+	transition: .5s;
+}
+
+.active .loading {
+	position: absolute;
+	left: 50%;
+	top: 56%;
+	transform: translate(-50%, -50%);
+
+	width: 70%;
+	height: 40%;
+	opacity: 1;
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-end;
+
+
+}
+
+.active .loading div {
+	width: .3rem;
+	height: .3rem;
+	border-radius: 50%;
+	background-color: #FFF;
+	animation: .8s loading ease-in-out infinite alternate;
+}
+
+@keyframes loading {
+	to {
+		transform: translate(0, -1rem);
+	}
+}
+
+.active .loading div:nth-child(2) {
+	animation-delay: .2s;
+}
+
+.active .loading div:nth-child(3) {
+	animation-delay: .4s;
+}
+
+.verity .loading {
+	opacity: 0;
 }
 
 
-/**错误信息提醒**/
+header {
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	width: 100%;
+	border-bottom: 1px #ecf0f1 solid;
+}
 
-.msg {
-    color: #ea8c37;
-    font-size: 14px;
-    padding-left: 40px;
-    padding-top: 10px;
-    clear: both;
-    font-weight: bold;
+header img {
+	height: 72px;
+}
+
+header ul {
+	display: inline-flex;
+	float: right;
+	list-style: none;
+	font-size: 22px;
+	margin-right: 50px;
+}
+
+header ul li {
+	margin-left: 50px;
+	line-height: 72px;
+}
+
+#name {
+	cursor: pointer;
+}
+
+#htitle {
+	padding: 0 10px;
+	cursor: default;
+	color: #34495e;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
 }
