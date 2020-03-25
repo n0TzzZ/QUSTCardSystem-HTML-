@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://cdn.bootcss.com/font-awesome/5.12.1/css/all.css" rel="stylesheet">
+    <script src="js/index.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <title>一卡通系统 —— 主页</title>
+</head>
+
+<body>
+    <header>
+        <img src="img/logo.png" alt="logo">
+        <ul>
+            <li>
+                <a href="setting/user.html" target="mainiframe">欢迎您，张三</a>
+            </li>
+            <li>
+                <a href="index.html">首页</a>
+            </li>
+            <li>
+                <a href="contact.html" target="mainiframe">联系我们</a>
+            </li>
+            <li>
+                <a onclick="logout()">退出</a>
+            </li>
+        </ul>
+    </header>
+    <nav>
+        <ul>
+            <li class="list">
+                <h2>
+                    <i></i>系统设置
+                </h2>
+                <div class="hide">
+                    <h5>
+                        <a href="setting/settings.html" target="mainiframe">密码设置</a></h5>
+                    <h5>
+                        <a href="setting/diary.html" target="mainiframe">系统日志</a></h5>
+                    <h5>
+                        <a href="setting/user.html" target="mainiframe">个人中心</a></h5>
+                    <h5>
+                        <a onclick="logout()">退出</a></h5>
+                </div>
+            </li>
+            <li class="list">
+                <h2><i></i>卡管理</h2>
+                <div class="hide">
+                    <h5>
+                        <a href="card/deposit.html" target="mainiframe">充值</a></h5>
+                    <h5>
+                        <a href="card/lost.html" target="mainiframe">挂失</a></h5>
+                    <h5>
+                        <a href="card/cancel.html" target="mainiframe">注销</a></h5>
+                    <h5>
+                        <a href="contact.html" target="mainiframe">联系我们</a></h5>
+                </div>
+            </li>
+            <li class="list">
+                <h2><i></i>财务管理</h2>
+                <div class="hide">
+                    <h5>
+                        <a href="count/school.html" target="mainiframe">师生消费统计</a></h5>
+                    <h5>
+                        <a href="count/hotel.html" target="mainiframe">餐饮收入统计</a></h5>
+                    <h5>
+                        <a href="count/market.html" target="mainiframe">超市收入统计</a></h5>
+                    <h5>
+                        <a href="count/bath.html" target="mainiframe">洗浴收入统计</a></h5>
+                </div>
+            </li>
+            <li class="list">
+                <h2><i></i>信息查询</h2>
+                <div class="hide">
+                    <h5>
+                        <a href="count/school.html" target="mainiframe">师生消费查询</a></h5>
+                    <h5>
+                        <a href="count/hotel.html" target="mainiframe">餐饮收入查询</a></h5>
+                    <h5>
+                        <a href="count/market.html" target="mainiframe">超市收入查询</a></h5>
+                    <h5>
+                        <a href="count/bath.html" target="mainiframe">洗浴收入查询</a></h5>
+                </div>
+            </li>
+            <li class="list">
+                <h2><i></i>用户管理</h2>
+                <div class="hide">
+                    <h5>
+                        <a href="user/user.html" target="mainiframe">添加用户</a></h5>
+                    <h5>
+                        <a href="user/user.html" target="mainiframe">查找用户</a></h5>
+                    <h5>
+                        <a href="user/user.html" target="mainiframe">修改用户</a></h5>
+                    <h5>
+                        <a href="user/user.html" target="mainiframe">删除用户</a></h5>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="show">
+        <iframe width="1570px" height="500px" name="mainiframe" id="mainiframe" src="setting/user.html" style="border:0px;margin:0px;padding:0px;" border="0"></iframe>
+    </div>
+
+</body>
+
+</html>

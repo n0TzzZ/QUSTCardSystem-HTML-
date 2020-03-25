@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+body {
+    background: url(../img/1.jpeg) no-repeat center center/cover;
+    color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+}
+
+main {
+    margin-top: -50px;
+    float: right;
+    width: 500px;
+    height: 420px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 50px;
+}
+
+label {
+    width: 100px;
+    float: left;
+    text-align: right;
+    margin-top: 28px;
+}
+
+main form,
+main input {
+    margin-top: 30px;
+    font-size: 22px;
+}
+
+main form {
+    text-align: center;
+}
+
+#teacher {
+    margin-left: 40px;
+}
+
+main .submit {
+    width: 180px;
+    padding: 10px;
+}
+
+main p {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+main p a {
+    text-decoration: none;
+}
+
+main p a:visited {
+    color: rgb(238, 223, 9);
+}
+
+footer {
+    display: block;
+    text-align: center;
+    margin-top: 500px;
+}
+
+
+/**错误信息提醒**/
+
+.msg {
+    color: #ea8c37;
+    font-size: 14px;
+    padding-left: 40px;
+    padding-top: 10px;
+    clear: both;
+    font-weight: bold;
+}
