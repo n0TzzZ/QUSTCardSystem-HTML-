@@ -9,12 +9,19 @@
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <title>Document</title>
+    <script>
+        setTimeout(
+            () => {
+                $('#indexusername').text($.cookie('username'));
+            }, 500
+        );
+    </script>
 </head>
 
 <body onload="hello()">
     <header class="header">
         <img src="../img/1.jpg" alt="头像">
-        <h1><a id="name">获取姓名中……</a>，<a id="hellotext" style="cursor: default;">您好</a><br>欢迎使用校园一卡通管理系统</h1>
+        <h1><a id="indexusername">游客</a>，<a id="hellotext" style="cursor: default;">您好</a><br>欢迎使用校园一卡通管理系统</h1>
         <br>
         <p>您的身份：老师</p>
     </header>
@@ -23,5 +30,5 @@
     </main>
 </body>
 <script src="../js/hello.js" type="text/javascript" charset="utf-8"></script>
-
+<script src="../js/user.js" type="text/javascript" charset="utf-8"></script>
 </html>

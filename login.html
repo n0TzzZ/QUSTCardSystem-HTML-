@@ -9,7 +9,7 @@
     <title>一卡通系统</title>
 </head>
 
-<body>
+<body onload="checklogin()">
 <header>
     <img src="img/logo.png" alt="logo">
     <ul>
@@ -43,7 +43,7 @@
 
             </form>
             <button id="submit" onclick="login()"></button>
-            <button class="submit" >
+            <button class="submit">
                 <p>登录</p>
                 <div class="loading">
                     <div></div>
@@ -57,13 +57,26 @@
 </div>
 </body>
 <script type="text/javascript">
+    function checklogin(){
+        setTimeout(
+            () => {
+                if ($.cookie('loginstats') == 'isLogin')
+                setTimeout(
+                    () => {
+                        $(this).toggleClass('active');
+                        window.location.href = "./index.html";
+                    }, 200
+                )
+            }, 200
+        );
+    }
     $('#login').click(function () {
         $('.switch span').removeClass('active');
         $(this).addClass('active');
 
         $(this).parents('.content').removeClass('regist');
         $(this).parents('.content').addClass('login');
-
+        $('#loginhint').text(' ');
         $('.submit p').text('登录');
         document.getElementById("submit").onclick = login;
 
@@ -74,7 +87,7 @@
 
         $(this).parents('.content').removeClass('login');
         $(this).parents('.content').addClass('regist');
-
+        $('#loginhint').text(' ');
         $('.submit p').text('注册');
         document.getElementById("submit").onclick = regist;
     })
