@@ -23,7 +23,7 @@
             <a href="contact.html" target="mainiframe">关于</a>
         </li>
         <li>
-            <a href="setting/user.html" target="mainiframe">欢迎您，</a><a id="name">X</a>
+            <a href="setting/user.html" target="mainiframe">欢迎您，<a id="indexusername">游客</a></a>
         </li>
         <li>
             <p id="htitle">校园一卡通管理系统</p>
@@ -109,5 +109,27 @@
 </div>
 
 </body>
+<script>
+    setTimeout(
+        () => {
+            $('#indexusername').text($.cookie('username'));
+        }, 500
+    );
+    function checklogin(){
+        setTimeout(
+            () => {
+                if ($.cookie('loginstats') != 'isLogin')
+                    setTimeout(
+                        () => {
+                            window.location.href = "./login.html";
+                        }, 200
+                    )
+            }, 200
+        );
+    }
+</script>
 
+<script src="./js/hello.js"></script>
+<script src="js/user.js"></script>
+<script src="js/index.js"></script>
 </html>

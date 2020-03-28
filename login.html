@@ -89,11 +89,17 @@
     })
 
     $('.submit').click(function () {
+        $('#loginhint').text(' ');
         $(this).toggleClass('active');
-        t = setTimeout(
+        setTimeout(
             () => {
                 $(this).toggleClass('active');
                 $('#submit').click();
+                setTimeout(
+                    () => {
+                        window.location.href = "./index.html";
+                    }, 1000
+                )
             }, 2000
         );
     })
