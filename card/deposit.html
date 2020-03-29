@@ -7,8 +7,26 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/form.css" />
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 		<title>卡充值 —— 一卡通系统</title>
+		<script>
+			setTimeout(
+				() => {
+					if ($.cookie('loginstats') != 'isLogin')
+						setTimeout(
+							() => {
+								window.location.href = "../login.html";
+							}, 10
+						)
+				}, 10
+			);
+			setTimeout(
+				() => {
+					$('#indexusername').text($.cookie('username'));
+				}, 10
+			);
+		</script>
 	</head>
 
 	<body>

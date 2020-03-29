@@ -1,272 +1,284 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <meta charset="UTF-8">
-    <title></title>
-    <style type="text/css">
-        * {
-            font-size: 50px;
-        }
+	<head>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				font-size: 50px;
+			}
 
-        a {
-            text-decoration: none;
-            cursor: pointer;
-            color: palevioletred;
-        }
+			a {
+				text-decoration: none;
+				cursor: pointer;
+				color: palevioletred;
+			}
 
-        table {
-            text-align: center;
-            margin: auto;
-        }
-    </style>
-</head>
+			table {
+				text-align: center;
+				margin: auto;
+			}
+		</style>
+		<script>
+			setTimeout(
+			() => {
+				if ($.cookie('loginstats') != 'isLogin')
+					setTimeout(
+						() => {
+							window.location.href = "../login.html";
+						}, 10
+					)
+			}, 10
+		);
+		setTimeout(
+			() => {
+				$('#indexusername').text($.cookie('username'));
+			}, 10
+		);
+	</script>
+	</head>
 
-<body>
-<a href="javascript:addUser();">添加用户</a>
-<input type="text" id="findInp"/>
-<a id="findUser">查找用户</a>
-<table border="1" cellspacing="0" cellpadding="3">
-    <tr>
-        <th>ID</th>
-        <th>用户名</th>
-        <th>密码</th>
-        <th>操作</th>
-    </tr>
-    <tr>
-        <td>1001</td>
-        <td>张三</td>
-        <td>123asd</td>
-        <td>
-            <a id="up">更新</a>
-            <a id="del">删除</a>
-            <a class="up">上移</a>
-            <a class="down">下移</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1002</td>
-        <td>李四</td>
-        <td>456zxc</td>
-        <td>
-            <a id="up">更新</a>
-            <a id="del">删除</a>
-            <a class="up">上移</a>
-            <a class="down">下移</a>
-        </td>
-    </tr>
-</table>
-<div id="addUser" style="display: none;">
-    <form>
-        ID:(只能是数字) <br/>
-        <input type="number" id="uid"/><br/> 用户名：(只能是汉字) <br/>
-        <input type="text" id="user"/><br/> 密码：(英文+数字或下划线，长度不小于6) <br/>
-        <input type="text" id="pwd"/><br/>
-        <a id="btn-add">提交</a>
-        <a id="btn-update">更新</a>
-        <a id="cancel">取消</a>
-    </form>
-</div>
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script>
-    //删除当前行
-    //用事件委托实现，否则点击一次后会失效
-    $('table').on('click', '#del', function () {
-        $(this).parents('tr').remove();
-        //$(this).parent().parent().remove(); 同上
-        //parent() parents()的区别就是前者获取的只有它的上一级元素
-        //后者把它的所有上级元素都获取了，不过可以明确指定获取哪一级
-    });
+	<body>
+		<a href="javascript:addUser();">添加用户</a>
+		<input type="text" id="findInp" />
+		<a id="findUser">查找用户</a>
+		<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<th>ID</th>
+				<th>用户名</th>
+				<th>密码</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>1001</td>
+				<td>张三</td>
+				<td>123asd</td>
+				<td>
+					<a id="up">更新</a>
+					<a id="del">删除</a>
+					<a class="up">上移</a>
+					<a class="down">下移</a>
+				</td>
+			</tr>
+			<tr>
+				<td>1002</td>
+				<td>李四</td>
+				<td>456zxc</td>
+				<td>
+					<a id="up">更新</a>
+					<a id="del">删除</a>
+					<a class="up">上移</a>
+					<a class="down">下移</a>
+				</td>
+			</tr>
+		</table>
+		<div id="addUser" style="display: none;">
+			<form>
+				ID:(只能是数字) <br />
+				<input type="number" id="uid" /><br /> 用户名：(只能是汉字) <br />
+				<input type="text" id="user" /><br /> 密码：(英文+数字或下划线，长度不小于6) <br />
+				<input type="text" id="pwd" /><br />
+				<a id="btn-add">提交</a>
+				<a id="btn-update">更新</a>
+				<a id="cancel">取消</a>
+			</form>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			//删除当前行
+			//用事件委托实现，否则点击一次后会失效
+			$('table').on('click', '#del', function() {
+				$(this).parents('tr').remove();
+				//$(this).parent().parent().remove(); 同上
+				//parent() parents()的区别就是前者获取的只有它的上一级元素
+				//后者把它的所有上级元素都获取了，不过可以明确指定获取哪一级
+			});
 
-    //初始化
-    function init() {
-        $('input').val('');
-    };
+			//初始化
+			function init() {
+				$('input').val('');
+			};
 
-    //显示隐藏的表单框
-    function addUser() {
-        init();
-        //show()里面的参数是动画执行的时间，可有可无，也可加一个回调函数,hide()同理
-        $('#addUser').show(1000);
-        $('#btn-add').show();
-        $('#btn-update').hide();
-        console.log($('#uid').val());
-    };
+			//显示隐藏的表单框
+			function addUser() {
+				init();
+				//show()里面的参数是动画执行的时间，可有可无，也可加一个回调函数,hide()同理
+				$('#addUser').show(1000);
+				$('#btn-add').show();
+				$('#btn-update').hide();
+				console.log($('#uid').val());
+			};
 
-    $('#cancel').click(function () {
-        $('#addUser').hide(1000);
-        init();
-    });
+			$('#cancel').click(function() {
+				$('#addUser').hide(1000);
+				init();
+			});
 
-    //提交验证
-    //定义一个全局变量，判断操作是否成功
-    var result = false;
-    $('#btn-add').click(function () {
-        msg();
-        if (result) {
-            $('#addUser').hide(1000);
-        }
-    })
+			//提交验证
+			//定义一个全局变量，判断操作是否成功
+			var result = false;
+			$('#btn-add').click(function() {
+				msg();
+				if (result) {
+					$('#addUser').hide(1000);
+				}
+			})
 
-    function msg() {
-        var val1 = $('#uid').val();
-        var val2 = $('#user').val();
-        var val3 = $('#pwd').val();
-        //正则验证
-        var reg_user = /^[\u0391-\uFFE5]+$/;
-        var reg_pwd = /^((\w*\d\w*[a-z]\w*)|(\w*[a-z]\w*\d\w*))$/i;
-        if (val1 == '') {
-            result = false;
-            alert('请输入ID')
-        } else if (val2 == '') {
-            result = false;
-            alert('请输入用户名')
-        } else if (val3 == '') {
-            result = false;
-            alert('请输入密码')
-        } else if (!reg_user.test(val2)) {
-            result = false;
-            alert('用户名格式不正确')
-        } else if (!reg_pwd.test(val3)) {
-            result = false;
-            alert('密码格式不正确')
-        } else {
-            result = true;
-        }
-        ;
-        if (result) {
-            push();
-        }
-        ;
-    }
+			function msg() {
+				var val1 = $('#uid').val();
+				var val2 = $('#user').val();
+				var val3 = $('#pwd').val();
+				//正则验证
+				var reg_user = /^[\u0391-\uFFE5]+$/;
+				var reg_pwd = /^((\w*\d\w*[a-z]\w*)|(\w*[a-z]\w*\d\w*))$/i;
+				if (val1 == '') {
+					result = false;
+					alert('请输入ID')
+				} else if (val2 == '') {
+					result = false;
+					alert('请输入用户名')
+				} else if (val3 == '') {
+					result = false;
+					alert('请输入密码')
+				} else if (!reg_user.test(val2)) {
+					result = false;
+					alert('用户名格式不正确')
+				} else if (!reg_pwd.test(val3)) {
+					result = false;
+					alert('密码格式不正确')
+				} else {
+					result = true;
+				};
+				if (result) {
+					push();
+				};
+			}
 
-    //把信息添加到相应表格内
-    function push() {
-        //创建tr节点
-        var $tr = $('<tr></tr>')
-        //遍历获取input中的内容依次填到td中
-        //第一个参数是索引，第二个参数是数据对象
-        //如果是json格式的话，第一个参数是键，第二个是值
-        $('form input').each(function (index, domEle) {
-            //添加td节点
-            var $td = $('<td></td>');
-            //将内容循环添加到创建好的td中
-            $td.append($(domEle).val());
-            //将td添加到创建的tr中
-            $td.appendTo($tr);
-        });
-        //创建td的删除更新按钮
-        var $td = $("<td><a id='up'>更新</a> <a id='del'>删除</a> <a class='up'>上移</a> <a class='down'>下移</a></td> ");
-        $td.appendTo($tr);
-        //最后将创建的tr插入到table中的最后一个位置
-        $tr.appendTo('table');
-    }
+			//把信息添加到相应表格内
+			function push() {
+				//创建tr节点
+				var $tr = $('<tr></tr>')
+				//遍历获取input中的内容依次填到td中
+				//第一个参数是索引，第二个参数是数据对象
+				//如果是json格式的话，第一个参数是键，第二个是值
+				$('form input').each(function(index, domEle) {
+					//添加td节点
+					var $td = $('<td></td>');
+					//将内容循环添加到创建好的td中
+					$td.append($(domEle).val());
+					//将td添加到创建的tr中
+					$td.appendTo($tr);
+				});
+				//创建td的删除更新按钮
+				var $td = $("<td><a id='up'>更新</a> <a id='del'>删除</a> <a class='up'>上移</a> <a class='down'>下移</a></td> ");
+				$td.appendTo($tr);
+				//最后将创建的tr插入到table中的最后一个位置
+				$tr.appendTo('table');
+			}
 
-    //更新操作
-    //定义全局变量，用于存放要修改的行号
-    var row = 0
-    $('table').on('click', '#up', function () {
-        $('#addUser').show(1000);
-        $('#btn-add').hide();
-        $('#btn-update').show();
-        //获取最后一个td前面所有的td节点
-        var val = $(this).parent().prevAll();
-        var arr = [];
-        //通过循环将所有td里面的文本放到数组里面
-        for (var i = 0; i < val.length; i++) {
-            arr[arr.length] = val.eq(i).text();
-        }
-        ;
-        //得到的arr数组与表格顺序相反
-        //将arr数组逆序与表格顺序相同，以便依次填到input中
-        var arr1 = arr.reverse();
-        for (var j = 0; j < $('form input').length; j++) {
-            $('form input').eq(j).val(arr1[j])
-        }
-        ;
-        //i是该行所在的行号
-        var i = $('table').find("tr").index(val.parent()[0]);
-        console.log(i);
-        row = i;
-    });
+			//更新操作
+			//定义全局变量，用于存放要修改的行号
+			var row = 0
+			$('table').on('click', '#up', function() {
+				$('#addUser').show(1000);
+				$('#btn-add').hide();
+				$('#btn-update').show();
+				//获取最后一个td前面所有的td节点
+				var val = $(this).parent().prevAll();
+				var arr = [];
+				//通过循环将所有td里面的文本放到数组里面
+				for (var i = 0; i < val.length; i++) {
+					arr[arr.length] = val.eq(i).text();
+				};
+				//得到的arr数组与表格顺序相反
+				//将arr数组逆序与表格顺序相同，以便依次填到input中
+				var arr1 = arr.reverse();
+				for (var j = 0; j < $('form input').length; j++) {
+					$('form input').eq(j).val(arr1[j])
+				};
+				//i是该行所在的行号
+				var i = $('table').find("tr").index(val.parent()[0]);
+				console.log(i);
+				row = i;
+			});
 
-    //更新验证
-    $('#btn-update').on('click', function () {
-        console.log($(this));
-        msg();
-        $('#addUser').hide(1000);
-        //过滤器 过滤索引，过滤出行号为row的tr，并移除
-        $('tr').filter(function (index) {
-            return index == row
-        }).remove();
-    });
+			//更新验证
+			$('#btn-update').on('click', function() {
+				console.log($(this));
+				msg();
+				$('#addUser').hide(1000);
+				//过滤器 过滤索引，过滤出行号为row的tr，并移除
+				$('tr').filter(function(index) {
+					return index == row
+				}).remove();
+			});
 
-    //查找操作
-    $('#findUser').on('click', function () {
-        //记录Input框中输入的值用于查找
-        var val = $('#findInp').val();
-        console.log(val);
-        var arr = [];
-        //通过循环将第一列td的值存入到数组中
-        for (var i = 0; i < $("tr").find("td:first").length; i++) {
-            arr[arr.length] = $("tr").find("td:first").eq(i).text();
-        }
-        ;
-        //通过循环判断input中输入的值，在表格中是否存在
-        for (var j = 0; j < arr.length; j++) {
-            if (arr[j] == val) {
-                result = true
-                //记录其所在的行号
-                var z = j;
-            }
-        }
-        ;
-        //置顶操作
-        //如果存在的话，就将该行置顶
-        if (result) {
-            console.log(z);
-            //      $('tr:nth-child('+z+1+')').css('background-color','#2D93CA');同下两行
-            var $tr = $('tr').eq(z + 1)
-            $tr.css('background-color', '#2D93CA');
-            //淡入淡出的一个动画
-            $tr.fadeOut().fadeIn();
-            //prepend() 在被选元素的开头插入指定的内容
-            $('table').prepend($tr);
-        } else {
-            alert('不存在该用户，请确认您输入的ID是否正确')
-        }
-    })
+			//查找操作
+			$('#findUser').on('click', function() {
+				//记录Input框中输入的值用于查找
+				var val = $('#findInp').val();
+				console.log(val);
+				var arr = [];
+				//通过循环将第一列td的值存入到数组中
+				for (var i = 0; i < $("tr").find("td:first").length; i++) {
+					arr[arr.length] = $("tr").find("td:first").eq(i).text();
+				};
+				//通过循环判断input中输入的值，在表格中是否存在
+				for (var j = 0; j < arr.length; j++) {
+					if (arr[j] == val) {
+						result = true
+						//记录其所在的行号
+						var z = j;
+					}
+				};
+				//置顶操作
+				//如果存在的话，就将该行置顶
+				if (result) {
+					console.log(z);
+					//      $('tr:nth-child('+z+1+')').css('background-color','#2D93CA');同下两行
+					var $tr = $('tr').eq(z + 1)
+					$tr.css('background-color', '#2D93CA');
+					//淡入淡出的一个动画
+					$tr.fadeOut().fadeIn();
+					//prepend() 在被选元素的开头插入指定的内容
+					$('table').prepend($tr);
+				} else {
+					alert('不存在该用户，请确认您输入的ID是否正确')
+				}
+			})
 
-    //上移操作
-    $('table').on('click', '.up', function () {
-        //.parents('tr') 找到父亲为tr的节点
-        var $tr = $(this).parents('tr');
-        console.log($tr);
-        //判断当前行是否是第一行
-        if ($tr.index() != 0) {
-            $tr.fadeOut().fadeIn();
-            //prev() 获得匹配元素集合中每个元素紧邻的前一个同胞元素
-            //before() 在被选元素的前面插入指定的内容
-            $tr.prev().before($tr);
-        }
-    })
+			//上移操作
+			$('table').on('click', '.up', function() {
+				//.parents('tr') 找到父亲为tr的节点
+				var $tr = $(this).parents('tr');
+				console.log($tr);
+				//判断当前行是否是第一行
+				if ($tr.index() != 0) {
+					$tr.fadeOut().fadeIn();
+					//prev() 获得匹配元素集合中每个元素紧邻的前一个同胞元素
+					//before() 在被选元素的前面插入指定的内容
+					$tr.prev().before($tr);
+				}
+			})
 
-    //下移操作
-    $('table').on('click', '.down', function () {
-        //获取一共多少行
-        var length1 = $('tr').length;
-        var $tr = $(this).parents('tr');
-        console.log(length1);
-        //如果当前行是最后一行，则不再往下移
-        if ($tr.index() != length1 - 1) {
-            $tr.fadeOut().fadeIn();
-            //next() 获得匹配元素集合中每个元素紧邻的后一个同胞元素
-            //after() 在被选元素的后面插入指定的内容
-            $tr.next().after($tr);
-        }
-    })
-</script>
-</body>
+			//下移操作
+			$('table').on('click', '.down', function() {
+				//获取一共多少行
+				var length1 = $('tr').length;
+				var $tr = $(this).parents('tr');
+				console.log(length1);
+				//如果当前行是最后一行，则不再往下移
+				if ($tr.index() != length1 - 1) {
+					$tr.fadeOut().fadeIn();
+					//next() 获得匹配元素集合中每个元素紧邻的后一个同胞元素
+					//after() 在被选元素的后面插入指定的内容
+					$tr.next().after($tr);
+				}
+			})
+		</script>
+	</body>
 
 </html>
