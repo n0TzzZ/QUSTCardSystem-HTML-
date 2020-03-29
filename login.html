@@ -1,120 +1,112 @@
 <!DOCTYPE html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
-    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script src="./js/user.js"></script>
-    <title>一卡通系统</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/login.css">
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+	<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script src="./js/user.js"></script>
+	<title>一卡通系统</title>
 </head>
 
 <body onload="checklogin()">
-<header>
-    <img src="img/logo.png" alt="logo">
-    <ul>
-        <li>
-            <a href="index.html">首页</a>
-        </li>
-        <li>
-            <a href="contact.html" target="mainiframe">关于</a>
-        </li>
-        <li>
-            <p id="htitle">校园一卡通管理系统</p>
-        </li>
-    </ul>
-</header>
-<div class="container">
-    <img src="img/1.jpeg">
-    <div class="panel">
-        <div class="content login">
-            <div class="switch">
-                <span id="login" class="active">登录</span><span> / </span><span id="regist">注册</span>
-            </div>
-            <form>
-                <div class="input" placeholder="用户名"><input type="text" id="username" name="username"
-                                                            autocomplete="off"></div>
-                <div class="input" placeholder="密码"><input type="password" id="userpwd" name="userpwd"
-                                                           autocomplete="off"></div>
-                <div id="repeat" class="input" placeholder="确认密码"><input type="password" id="reuserpwd"
-                                                                         onkeyup="checkpwd()" name="reuserpwd"
-                                                                         type="text" autocomplete="off"></div>
-                <span id="loginhint"></span>
+	<header>
+		<img src="img/logo.png" alt="logo">
+		<ul>
+			<li>
+				<a href="index.html">首页</a>
+			</li>
+			<li>
+				<a href="contact.html" target="mainiframe">关于</a>
+			</li>
+			<li>
+				<p id="htitle">校园一卡通管理系统</p>
+			</li>
+		</ul>
+	</header>
+	<div class="container">
+		<img src="img/1.jpeg">
+		<div class="panel">
+			<div class="content login">
+				<div class="switch">
+					<span id="login" class="active">登录</span><span> / </span><span id="regist">注册</span>
+				</div>
+				<form>
+					<div class="input" placeholder="用户名"><input type="text" id="username" name="username" autocomplete="off"></div>
+					<div class="input" placeholder="密码"><input type="password" id="userpwd" name="userpwd" autocomplete="off"></div>
+					<div id="repeat" class="input" placeholder="确认密码"><input type="password" id="reuserpwd" onkeyup="checkpwd()" name="reuserpwd"
+						 type="text" autocomplete="off"></div>
+					<span id="loginhint"></span>
 
-            </form>
-            <button id="submit" onclick="login()"></button>
-            <button class="submit">
-                <p>登录</p>
-                <div class="loading">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </button>
+				</form>
+				<button id="submit" onclick="login()"></button>
+				<button class="submit">
+					<p>登录</p>
+					<div class="loading">
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				</button>
 
-        </div>
-    </div>
-</div>
+			</div>
+		</div>
+	</div>
 </body>
 <script type="text/javascript">
-    function checklogin(){
-        setTimeout(
-            () => {
-                if ($.cookie('loginstats') == 'isLogin')
-                setTimeout(
-                    () => {
-                        $(this).toggleClass('active');
-                        window.location.href = "./index.html";
-                    }, 200
-                )
-            }, 200
-        );
-    }
-    $('#login').click(function () {
-        $('.switch span').removeClass('active');
-        $(this).addClass('active');
+	function checklogin() {
+		setTimeout(
+			() => {
+				if ($.cookie('loginstats') == 'isLogin')
+					setTimeout(
+						() => {
+							$(this).toggleClass('active');
+							window.location.href = "./index.html";
+						}, 200
+					)
+			}, 200
+		);
+	}
+	$('#login').click(function() {
+		$('.switch span').removeClass('active');
+		$(this).addClass('active');
 
-        $(this).parents('.content').removeClass('regist');
-        $(this).parents('.content').addClass('login');
-        $('#loginhint').text(' ');
-        $('.submit p').text('登录');
-        document.getElementById("submit").onclick = login;
+		$(this).parents('.content').removeClass('regist');
+		$(this).parents('.content').addClass('login');
+		$('#loginhint').text(' ');
+		$('.submit p').text('登录');
+		document.getElementById("submit").onclick = login;
 
-    })
-    $('#regist').click(function () {
-        $('.switch span').removeClass('active');
-        $(this).addClass('active');
+	})
+	$('#regist').click(function() {
+		$('.switch span').removeClass('active');
+		$(this).addClass('active');
 
-        $(this).parents('.content').removeClass('login');
-        $(this).parents('.content').addClass('regist');
-        $('#loginhint').text(' ');
-        $('.submit p').text('注册');
-        document.getElementById("submit").onclick = regist;
-    })
+		$(this).parents('.content').removeClass('login');
+		$(this).parents('.content').addClass('regist');
+		$('#loginhint').text(' ');
+		$('.submit p').text('注册');
+		document.getElementById("submit").onclick = regist;
+	})
 
-    $('.input input').on('focus', function () {
-        $(this).parents().addClass('focus');
-    })
+	$('.input input').on('focus', function() {
+		$(this).parents().addClass('focus');
+	})
 
-    $('.input input').on('blur', function () {
-        if ($(this).val() === '')
-            $(this).parents().removeClass('focus');
-    })
+	$('.input input').on('blur', function() {
+		if ($(this).val() === '')
+			$(this).parents().removeClass('focus');
+	})
 
-    $('.submit').click(function () {
-        $('#loginhint').text(' ');
-        $(this).toggleClass('active');
-        setTimeout(
-            () => {
-                $(this).toggleClass('active');
-                $('#submit').click();
-                setTimeout(
-                    () => {
-                        window.location.href = "./index.html";
-                    }, 1000
-                )
-            }, 2000
-        );
-    })
+	$('.submit').click(function() {
+		$('#loginhint').text(' ');
+		$(this).toggleClass('active');
+		setTimeout(
+			() => {
+				$(this).toggleClass('active');
+				$('#submit').click();
+			}, 1000
+		);
+	})
 </script>
 </html>
