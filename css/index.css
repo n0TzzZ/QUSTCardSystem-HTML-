@@ -153,6 +153,10 @@ nav {
 	margin-top: 30px;
 }
 
+#quit{
+	cursor: pointer;
+	transition: .2s all;
+}
 /* diary.html */
 
 .diary_header {
