@@ -214,3 +214,53 @@ a {
 	text-decoration: none;
 	cursor: pointer;
 }
+#submit{
+	display: none;
+}
+.ban{
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background-color: #e74c3c;
+	opacity: 0.98;
+	align-items: center;
+	justify-content: center;
+}
+
+.ban h2{
+	background-color: #e74c3c;
+	text-align: center;
+	font-size: 36px;
+	color:#ecf0f1;
+	align-items: center;
+	justify-content: center;
+}
+.ban p{
+	background-color: #e74c3c;
+	text-align: center;
+	font-size: 24px;
+	color:#ecf0f1;
+	align-items: center;
+	justify-content: center;
+}
+.ban strong{
+	background-color: #e74c3c;
+	text-align: center;
+	font-size: 26px;
+	color:#ecf0f1;
+	align-items: center;
+	justify-content: center;
+}
+
+@media screen and (min-width:1200px) {
+	.ban {
+		display: none;
+	}
+}
+
+@media screen and (min-width:2400px) {
+	.ban {
+		display: block;
+	}
+}
