@@ -51,6 +51,7 @@ header ul li {
 	cursor: default;
 	color: #34495e;
 }
+
 a {
 	text-decoration: none;
 	cursor: pointer;
@@ -153,10 +154,11 @@ nav {
 	margin-top: 30px;
 }
 
-#quit{
+#quit {
 	cursor: pointer;
 	transition: .2s all;
 }
+
 /* diary.html */
 
 .diary_header {
@@ -194,7 +196,8 @@ nav {
 .diary_main table td {
 	height: 70px;
 }
-.ban{
+
+.ban {
 	position: fixed;
 	z-index: 999;
 	width: 100%;
@@ -205,27 +208,29 @@ nav {
 	justify-content: center;
 }
 
-.ban h2{
+.ban h2 {
 	background-color: #e74c3c;
 	text-align: center;
 	font-size: 36px;
-	color:#ecf0f1;
+	color: #ecf0f1;
 	align-items: center;
 	justify-content: center;
 }
-.ban p{
+
+.ban p {
 	background-color: #e74c3c;
 	text-align: center;
 	font-size: 24px;
-	color:#ecf0f1;
+	color: #ecf0f1;
 	align-items: center;
 	justify-content: center;
 }
-.ban strong{
+
+.ban strong {
 	background-color: #e74c3c;
 	text-align: center;
 	font-size: 26px;
-	color:#ecf0f1;
+	color: #ecf0f1;
 	align-items: center;
 	justify-content: center;
 }
