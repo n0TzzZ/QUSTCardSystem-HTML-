@@ -1,7 +1,7 @@
 /* setting.html */
 /* deposit.html */
 .from {
-	position: relative;
+	position: absolute;
 	width: 20%;
 	top: 100px;
 	left: 40%;
@@ -83,18 +83,31 @@
 	cursor: pointer;
 }
 
-.true,.false:hover{
+.true,
+.false:hover {
 	background-color: #2980b9;
 	color: #FFF;
 }
 
-.true,.false:active{
+.true,
+.false:active {
 	background-color: #3498db;
 }
+
 .true {
 	left: 10%;
 }
 
 .false {
 	right: 10%;
+}
+
+.from span {
+	font-size: 16px;
+	color: #e74c3c;
+	position: absolute;
+	bottom: -10%;
+	text-align: center;
+	width: 100%;
+	cursor: default;
 }
