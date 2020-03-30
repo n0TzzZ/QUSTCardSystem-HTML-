@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/index.css">
-	<link rel="stylesheet" type="text/css" href="../css/form.css"/>
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <title>Document</title>
-	<script>
-		setTimeout(
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="../css/index.css">
+		<link rel="stylesheet" type="text/css" href="../css/form.css" />
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+		<title>Document</title>
+		<script>
+			setTimeout(
 			() => {
 				if ($.cookie('loginstats') != 'isLogin')
 					setTimeout(
@@ -27,23 +27,29 @@
 			}, 10
 		);
 	</script>
-</head>
+	</head>
 
-<body>
-    <main>
-        <form class="from" action="ResetPwdServlet" method="post">
-			<h2>修改密码</h2>
-			<hr >
-            <label for="oldPassword" id="label1">原密码:</label>
-            <input type="password" name="oldPassword" class="input1" id="oldPassword"><br>
-            <label for="newPassword" id="label2">新密码:</label>
-            <input type="password" name="newPassword" class="input2" id="newPassword"><br>
-            <label for="newPassword" id="label3">重复密码:</label>
-            <input type="password" name="repeatPassword" class="input3" id="repeatPassword"><br>
-            <input type="submit" value="确 定" class="true">
-            <input type="reset" value="重 置" class="false">
-        </form>
-    </main>
-</body>
-
+	<body>
+		<main>
+			<from class="from">
+				<h2>修改密码</h2>
+				<hr>
+				<label for="oldpwd" id="label1">原密码:</label>
+				<input type="password" class="input1" id="oldpwd"><br>
+				<label for="newpwd" id="label2">新密码:</label>
+				<input type="password" class="input2" id="newpwd" onkeyup="checkuppwd()"><br>
+				<label for="newpwd" id="label3">重复密码:</label>
+				<input type="password" class="input3" id="repwd" onkeyup="checkuppwd()"><br>
+				<button class="true" onclick="updatepwd()">确 定</button>
+				<input type="reset" value="重 置" class="false">
+				<span id="formhint"></span>
+			</from>
+		</main>
+	</body>
+	<script src="../js/user.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$('.false').click(function() {
+			$('#formhint').text(' ');
+		});
+	</script>
 </html>

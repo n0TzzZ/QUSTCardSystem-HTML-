@@ -6,6 +6,7 @@ if (window.XMLHttpRequest) {
 } else {
 	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
 }
+
 document.onkeyup = function(e) {
 	if (window.event) //如果window.event对象存在，就以此事件对象为准
 		e = window.event;
@@ -145,6 +146,73 @@ function checkpwd() {
 	}
 }
 
+function checkuppwd() {
+	var userpwd = $("#newpwd").val();
+	var reuserpwd = $("#repwd").val();
+	if (userpwd == reuserpwd) {
+		$('#formhint').text(' ');
+		return 1;
+	} else {
+		$('#formhint').text('两次密码输入不一致');
+		return 2;
+	}
+}
+
+function updatepwd() {
+	var userid = $.cookie('userid');
+	var oldpwd = $('#oldpwd').val();
+	var newpwd = $('#newpwd').val();
+	var repwd = $('#repwd').val();
+	console.log(userid);
+	if (oldpwd != '' && repwd != '') {
+		console.log(userid);
+		if (checkuppwd() == 1) {
+			var url = urlpath + "?method=updatepwd&userid=" + userid + "&oldpwd=" + oldpwd + "&newpwd=" + newpwd;
+			if (xmlhttp != null) {
+				xmlhttp.open("GET", url, true);
+				console.log(xmlhttp.readyState);
+				console.log(xmlhttp.status);
+				xmlhttp.onreadystatechange = function(msg) {
+					console.log(xmlhttp.readyState);
+					console.log(xmlhttp.status);
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						console.log(xmlhttp.readyState);
+						console.log(xmlhttp.status);
+						console.log("连接服务器成功");
+						if (xmlhttp.responseText == "true") {
+							$('#formhint').text("修改密码成功")
+							alert('修改密码成功，请重新登陆');
+							$.cookie('userid', null, {
+								expires: 7,
+								path: '/'
+							});
+							$.cookie('loginstats', null, {
+								expires: 7,
+								path: '/'
+							});
+							$.cookie('username', null, {
+								expires: 7,
+								path: '/'
+							});
+							setTimeout(
+								() => {
+									window.open('../login.html', '_parent')
+								}, 500
+							)
+						} else if (xmlhttp.responseText == "oldpwdfalse") {
+							$('#formhint').text("旧密码错误")
+						} else if (xmlhttp.responseText == "updatepwdfalse") {
+							$('#formhint').text("修改密码异常")
+						}
+					}
+				}
+				xmlhttp.send();
+			}
+		}
+	}
+
+}
+
 function getusername() {
 	var userid = $.cookie('userid');
 	console.log(userid);
@@ -164,7 +232,6 @@ function getusername() {
 		xmlhttp.send();
 	}
 }
-
 
 function quit() {
 	$.cookie('userid', null, {
