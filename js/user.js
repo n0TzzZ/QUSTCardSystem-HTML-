@@ -68,6 +68,9 @@ function login() {
 						)
 					}
 				}
+				if (xmlhttp.status == 404 || xmlhttp.status == 500 || xmlhttp.status == 0) {
+					$('#loginhint').text("服务器连接异常")
+				}
 			}
 			xmlhttp.send();
 		}
@@ -104,6 +107,8 @@ function regist() {
 			if (xmlhttp != null) {
 				xmlhttp.open("GET", url, true)
 				xmlhttp.onreadystatechange = function(msg) {
+					console.log(xmlhttp.readyState);
+					console.log(xmlhttp.status);
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 						console.log("连接服务器成功")
 						if (xmlhttp.responseText == "true") {
@@ -113,6 +118,9 @@ function regist() {
 						} else if (xmlhttp.responseText == "usernamefalse") {
 							$('#loginhint').text("用户名已被注册")
 						}
+					}
+					if (xmlhttp.status == 404 || xmlhttp.status == 500 || xmlhttp.status == 0) {
+						$('#loginhint').text("服务器连接异常")
 					}
 				}
 				xmlhttp.send();
