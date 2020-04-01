@@ -58,6 +58,17 @@
 		<p>为保证您的访问体验,请调整窗口大小<br><strong>最大化</strong>或<strong> 'Ctrl' + '鼠标滚轮'</strong> </p>
 		<p>推荐分辨率：1920×1080 </p>
 	</div>
+	<span id="seticon" onclick="toogleset()">设置</span>
+	<div id="seturl" class="hide">
+		<span id="userspan">UserUrl</span><input id="userurl" value="localhost:8080/QCSWebServer/UserServlet" />
+		<span id="cardspan">CardUrl</span><input id="cardurl" value="localhost:8080/QCSWebServer/CardServlet" />
+		<span id="truespan" onclick="seturlpath()">
+			确 定
+		</span>
+		<span id="falsespan" onclick="toogleset()">
+			取 消
+		</span>
+	</div>
 </body>
 <script type="text/javascript">
 	function checklogin() {
@@ -114,5 +125,28 @@
 			}, 1000
 		);
 	})
+
+	function toogleset() {
+		$('#seturl').toggleClass('hide');
+	}
+
+	function seturlpath() {
+		var userurl = 'http://' + $('#userurl').val();
+		$.cookie('userurl', userurl, {
+			expires: 365,
+			path: '/'
+		});
+		var cardurl = 'http://' + $('#cardurl').val();
+		$.cookie('cardurl', cardurl, {
+			expires: 365,
+			path: '/'
+		});
+		alert('设置成功，请重新登陆');
+		setTimeout(
+			() => {
+				window.location.href = "./login.html";
+			}, 1000
+		);
+	}
 </script>
 </html>

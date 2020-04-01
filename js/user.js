@@ -1,4 +1,5 @@
-var urlpath = 'http://localhost:8080/QCSWebServer/UserServlet';
+var userurlpath = $.cookie('userurl');
+console.log(userurlpath)
 var xmlhttp;
 if (window.XMLHttpRequest) {
 	//code for IE7/chrome/firefox/safari...
@@ -34,39 +35,44 @@ function login() {
 	if (username != null && userpwd != null) {
 		console.log(username);
 		console.log(userpwd);
-		var url = urlpath + "?method=login&username=" + username + "&userpwd=" + userpwd;
+		var url = userurlpath + "?method=login&username=" + username + "&userpwd=" + userpwd;
 		if (xmlhttp != null) {
 			xmlhttp.open("GET", url, true)
 			xmlhttp.onreadystatechange = function(msg) {
 				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-					console.log("连接服务器成功")
+					console.log("连接服务器成功");
 					if (xmlhttp.responseText == "usernamefalse") {
-						$('#loginhint').text("登陆失败，用户名不存在")
+						$('#loginhint').text("登陆失败，用户名不存在");
 					} else if (xmlhttp.responseText == "pwdfalse") {
-						$('#loginhint').text("登陆失败，密码错误")
+						$('#loginhint').text("登陆失败，密码错误");
 					} else {
-						$('.submit p').text('登陆成功');
-						userid = xmlhttp.responseText;
-						$.cookie('userid', userid, {
-							expires: 7,
-							path: '/'
-						});
-						$.cookie('loginstats', 'isLogin', {
-							expires: 7,
-							path: '/'
-						});
-						getusername();
-						$(this).toggleClass('active');
-						setTimeout(
-							() => {
-								$('#loginhint').text("欢迎你，" + $.cookie('username'));
-							}, 200
-						);
-						setTimeout(
-							() => {
-								window.location.href = "./index.html";
-							}, 500
-						)
+						
+						if (xmlhttp.responseText != null) {
+							$('.submit p').text('登陆成功');
+							userid = xmlhttp.responseText;
+							$.cookie('userid', userid, {
+								expires: 7,
+								path: '/'
+							});
+							$.cookie('loginstats', 'isLogin', {
+								expires: 7,
+								path: '/'
+							});
+							getusername();
+							$(this).toggleClass('active');
+							setTimeout(
+								() => {
+									$('#loginhint').text("欢迎你，" + $.cookie('username'));
+								}, 200
+							);
+							setTimeout(
+								() => {
+									window.location.href = "./index.html";
+								}, 500
+							)
+						}else{
+							console.log(xmlhttp.responseText);
+						}
 					}
 				}
 				if (xmlhttp.status == 404 || xmlhttp.status == 500 || xmlhttp.status == 0) {
@@ -103,7 +109,7 @@ function regist() {
 			console.log('密码：' + userpwd);
 			console.log('ID：' + userid);
 			console.log('注册时间：' + registdate);
-			var url = urlpath + "?method=regist&userid=" + userid + "&username=" + username + "&userpwd=" + userpwd +
+			var url = userurlpath + "?method=regist&userid=" + userid + "&username=" + username + "&userpwd=" + userpwd +
 				"&registdate=" + registdate;
 			if (xmlhttp != null) {
 				xmlhttp.open("GET", url, true)
@@ -167,7 +173,7 @@ function updatepwd() {
 	if (oldpwd != '' && repwd != '') {
 		console.log(userid);
 		if (checkuppwd() == 1) {
-			var url = urlpath + "?method=updatepwd&userid=" + userid + "&oldpwd=" + oldpwd + "&newpwd=" + newpwd;
+			var url = userurlpath + "?method=updatepwd&userid=" + userid + "&oldpwd=" + oldpwd + "&newpwd=" + newpwd;
 			if (xmlhttp != null) {
 				xmlhttp.open("GET", url, true);
 				console.log(xmlhttp.readyState);
@@ -216,7 +222,7 @@ function updatepwd() {
 function getusername() {
 	var userid = $.cookie('userid');
 	console.log(userid);
-	var url = urlpath + "?method=getusername&userid=" + userid;
+	var url = userurlpath + "?method=getusername&userid=" + userid;
 	if (xmlhttp != null) {
 		xmlhttp.open("GET", url, true)
 		xmlhttp.onreadystatechange = function(msg) {

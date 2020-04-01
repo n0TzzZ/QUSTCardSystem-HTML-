@@ -264,3 +264,96 @@ a {
 		display: block;
 	}
 }
+
+#seticon{
+	position: absolute;
+	left: 50px;
+	bottom: 50px;
+	cursor: pointer;
+	color: #bdc3c7;
+}
+
+#seticon:active{
+	color: #3498DB;
+}
+
+#seturl{
+	z-index: 1;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #FFF;
+	opacity: 0.9;
+	transition: 0.3s all;
+}
+
+#seturl input{
+	position: absolute;
+	left: 30%;
+	width: 40%;
+	height: 32px;
+	font-size: 18px;
+	text-align: center;
+	border: 1px #3498DB solid;
+	box-shadow: 0 0 8px ;
+	border-radius: 6px;
+	line-height: 24px;
+}
+
+#userurl{
+	top: 280px;
+}
+
+#cardurl{
+	top: 380px;
+}
+
+#userspan,#cardspan{
+	position: absolute;
+	left: 45%;
+	width: 10%;
+	font-size: 18px;
+	text-align: center;
+	line-height: 24px;
+	cursor: default;
+}
+#userspan{
+	top: 250px;
+}
+
+#cardspan{
+	top: 350px;
+}
+
+#truespan,#falsespan{
+	position: absolute;
+	top: 480px;
+	width: 100px;
+	font-size: 18px;
+	text-align: center;
+	border: 1px #3498DB solid;
+	box-shadow: 0 0 8px ;
+	border-radius: 6px;
+	line-height: 24px;
+	cursor: pointer;
+	transition: .2s all;
+}#truespan{
+	left: 40%;
+}
+
+#falsespan{
+	right: 40%;
+}
+
+#falsespan:active{
+	color: #FFF;
+	background-color: #3498DB;
+}
+#truespan:active{
+	color: #FFF;
+	background-color: #3498DB;
+}
+
+.hide{
+	display: none;
+}
