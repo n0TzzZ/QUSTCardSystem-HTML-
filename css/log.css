@@ -1,0 +1,60 @@
+table {
+	margin: 10px auto;
+	text-align: center;
+	border: 2px #34495E solid;
+	border-radius: 10px;
+	padding: 10px;
+	font-size: 18px;
+	margin-bottom: 50px;
+	cursor: default;
+}
+
+table tr th {
+	color: #3498DB;
+	height: 36px;
+	overflow: hidden;
+	border-bottom: 2px #95a5a6 solid;
+}
+
+table tr td {
+	height: 28px;
+	overflow: hidden;
+	width:180px;
+	transition: .2s;
+	animation: load .5s ease-in forwards;
+	border-radius: 8px;
+}
+table tr td:hover{
+	background-color: #ecf0f1;
+	font-size: 20px;
+}
+.td1 {
+	color: #34495e;
+}
+
+.td2 {
+	color: #27ae60;
+}
+
+.td3 {
+	color: #e74c3c;
+}
+
+.td4 {
+	color: #8e44ad;
+
+}
+
+.td5 {
+	color: #f39c12;
+}
+
+.td6 {
+	color: #27ae60;
+}
+
+@keyframes load {
+	to {
+		width: 200px;
+	}
+}
