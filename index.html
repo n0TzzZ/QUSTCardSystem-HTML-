@@ -112,10 +112,10 @@
 			</li>
 		</ul>
 	</nav>
-	<div class="show">
-		<iframe width="1400px" height="750px" name="mainiframe" id="mainiframe" src="setting/user.html" style="border:0px;margin:0px;padding:0px;"
-		 border="0"></iframe>
-	</div>
+
+
+	<iframe name="mainiframe" src="setting/user.html" width="86%" height="92%" scrolling="no" id="mainiframe" style="border: 0px;"></iframe>
+
 
 </body>
 <script>
@@ -133,11 +133,16 @@
 	setTimeout(
 		() => {
 			$('#indexusername').text($.cookie('username'));
-		}, 10
+		}, 100
 	);
 </script>
-
-<script src="./js/hello.js"></script>
-<script src="js/user.js"></script>
-<script src="js/index.js"></script>
+<script src="js/iframeResizer.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	iFrameResize({
+		log: false,
+	});
+</script>
+<script src="js/hello.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/user.js" type="text/javascript" charset="utf-8"></script>
 </html>
